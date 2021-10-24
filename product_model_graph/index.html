@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../common_libs/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./style.css">
+        <title>Product Visualization</title>
+    </head>
+    <body>
+        <div class="container body-view">
+            <div class="main-title">UI/Visualization tools</div>
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="view-card">
+                        <div class="title">Average no of request per month</div>
+                        <canvas id="average_no_of_request" height="100px"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="view-card">
+                        <div class="title">Average response time per month</div>
+                        <canvas id="average_response_time" height="120px"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="view-card">
+                        <div class="title">No of request not responded per month</div>
+                        <canvas id="average_not_response_time" height="120px"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-4">
+                    <div class="view-card">
+                        <div class="title">No of Request per product and product type</div>
+                        <canvas id="product_and_product_type" height="120px"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="view-card">
+                        <div class="title">No of Verbal/written response with respect to country</div>
+                        <div id="verbal_written_response" style="height: 200px;"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="view-card">
+                        <div class="title">Highest request rate based on country</div>
+                        <div id="highest_request_rate" style="height: 200px;"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="view-card">
+                        <div class="title">Word cloud</div>
+                        <div id="word_cloud" style="height: 200px;"></div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="view-card">
+                        <div class="title">No of Response time taken more than 3 days per month</div>
+                        <canvas id="no_of_response_time" height="100px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../common_libs/js/bootstrap.bundle.min.js"></script>
+        <script src="../common_libs/js/popper.min.js"></script>
+        <script src="../common_libs/js/bootstrap.min.js"></script>
+        <script src="./libs/js/chart.min.js"></script>
+        <script src="./libs/js/anychart-base.min.js"></script>
+        <script src="./libs/js/anychart-tag-cloud.min.js"></script>
+        <script type="text/javascript" src="./libs/js/loader.js"></script>
+        <script src="./app.js"></script>
+    </body>
+</html>

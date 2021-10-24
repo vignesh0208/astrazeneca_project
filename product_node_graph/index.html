@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Astrazenca project</title>
+        <link href="../common_libs/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./libs/css/vis.css">
+        <link rel="stylesheet" href="./style.css">
+        <script src="../common_libs/js/jquery.min.js"></script>
+        <script src="./libs/js/angular.min.js"></script>
+        <script src="./app.js"></script>
+        <script src="./libs/js/vis.js"></script>
+        <script src="./angular-vis.js"></script>
+        <script src="./libs/js/lodash.min.js"></script>
+        
+    </head>
+
+    <body class="astrazenca-project">
+        <div ng-app="app" ng-controller="myCtrl">
+            <div class="header">
+                <img src="./logo.svg" alt="logo" class="logo" />
+                <div class="row">
+                    <div class="col-sm-6 search-reset-btn">
+                        <input class="select-option" list="myList" ng-model="selectedCountry" ng-change="onChangeSelectedvalue()" placeholder="Search by country" />
+                        <datalist id="myList">
+                            <option ng-repeat="p in list" value="{{p}}"></option>
+                        </datalist>
+                        <div class="reset-btn" ng-click="onClickReset()" ng-show="selectedCountry.length != 0">Reset</div>
+                    </div>
+                    <div class="col-sm-6 option-list" ng-show="viewRadioOption && selectedCountry.length != 0">
+                        <label>
+                            <input type="radio" ng-model="selectedValue" value="Product" ng-click="filterValue(selectedValue)">
+                            Products
+                        </label>
+                        <label>
+                            <input type="radio" ng-model="selectedValue" value="Therapeutic" ng-click="filterValue(selectedValue)">
+                            Therapeutic Area
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="card-view">
+                            <div class="network-view">
+                                <vis-network data="data" options="options" events="events" height="100%"></vis-network>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-view">
+                            <div class="empty-state" ng-show="!selectNodeValueStatus && selectTherapeuticArray.length === 0">Select Product ID</div>
+                            <div class="product-view" ng-show="selectNodeValueStatus">
+                                <div class="row">
+                                    <div class="col-sm-4">Product Id</div>
+                                    <div class="col-sm-8">{{selectNodeValue.id}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Therapeutic Area</div>
+                                    <div class="col-sm-8">{{selectNodeValue.therapeutic_area}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Country</div>
+                                    <div class="col-sm-8">{{selectNodeValue.country}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Case Origin</div>
+                                    <div class="col-sm-8">{{selectNodeValue.case_origin}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Customer Type</div>
+                                    <div class="col-sm-8">{{selectNodeValue.customer_type}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Details</div>
+                                    <div class="col-sm-8">{{selectNodeValue.details}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Category</div>
+                                    <div class="col-sm-8">{{selectNodeValue.category}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Date Time Opened</div>
+                                    <div class="col-sm-8">{{selectNodeValue.date_time_opened}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">Date Time Closed</div>
+                                    <div class="col-sm-8">{{selectNodeValue.date_time_closed}}</div>
+                                </div>
+                            </div>
+                            <div class="product-view" ng-show="selectTherapeuticArray.length != 0">
+                                <div class="loop-value" ng-repeat="value in selectTherapeuticArray">
+                                    <div class="row">
+                                        <div class="col-sm-4">Product Id</div>
+                                        <div class="col-sm-8">{{value.id}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Therapeutic Area</div>
+                                        <div class="col-sm-8">{{value.therapeutic_area}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Country</div>
+                                        <div class="col-sm-8">{{value.country}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Case Origin</div>
+                                        <div class="col-sm-8">{{value.case_origin}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Customer Type</div>
+                                        <div class="col-sm-8">{{value.customer_type}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Details</div>
+                                        <div class="col-sm-8">{{value.details}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Category</div>
+                                        <div class="col-sm-8">{{value.category}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Date Time Opened</div>
+                                        <div class="col-sm-8">{{value.date_time_opened}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">Date Time Closed</div>
+                                        <div class="col-sm-8">{{value.date_time_closed}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+
+</html>
